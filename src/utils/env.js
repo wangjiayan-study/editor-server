@@ -4,4 +4,5 @@ module.exports = {
   ENV,
   isPrd: ENV === "production",
   isDev: ENV === "dev",
+  isTestLocal: ENV === "test_local",
 };
