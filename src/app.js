@@ -5,7 +5,7 @@ const json = require("koa-json");
 const onerror = require("koa-onerror");
 const bodyparser = require("koa-bodyparser");
 const logger = require("koa-logger");
-
+const jwt = require("./middleware/jwt");
 const index = require("./routes/index");
 const users = require("./routes/users");
 const works = require("./routes/works");
@@ -28,6 +28,7 @@ app.use(
     extension: "pug",
   })
 );
+app.use(jwt);
 
 // logger
 app.use(async (ctx, next) => {
