@@ -6,6 +6,7 @@
     "start": "node bin/www",
     "dev": "cross-env NODE_ENV=dev ./node_modules/.bin/nodemon bin/www",
     "prd": "pm2 start bin/www",
+    "prd-dev": "cross-env NODE_ENV=dev pm2 start bin/pm2-prd-dev.config.js",
     "test:local": "cross-env NODE_ENV=test_local jest --runInBand  --passWithNoTests --colors --forceExit"
   },
   "dependencies": {
@@ -26,6 +27,7 @@
     "koa-views": "^6.2.0",
     "mongoose": "^6.6.1",
     "mysql2": "^2.3.3",
+    "pm2": "^5.2.0",
     "pug": "^2.0.3",
     "redis": "^3.0.2",
     "sequelize": "^6.23.1",
