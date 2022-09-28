@@ -1,6 +1,7 @@
-const { isPrd, isPrdDev } = require("../utils/env.js");
+const { isPrd } = require('../utils/env')
 
-let fileName = "dev.js";
-if (isPrd) fileName = "prd.js";
-const conf = require(`./envs/${fileName}`);
-module.exports = conf;
+let fileName = 'dev.js'
+if (isPrd) fileName = 'prd.js'
+
+const conf = require(`./envs/${fileName}`) // eslint-disable-line
+module.exports = conf

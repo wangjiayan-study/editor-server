@@ -1,8 +1,8 @@
-const { createWorkContentService } = require("../service/works");
+const { createWorkContentService } = require('../service/works')
 
 async function createWorkContent() {
-  const rst = await createWorkContentService();
-  return rst;
+    const rst = await createWorkContentService()
+    return rst
 }
 
-module.exports = { createWorkContent };
+module.exports = { createWorkContent }

@@ -7,7 +7,9 @@
     "dev": "cross-env NODE_ENV=dev ./node_modules/.bin/nodemon bin/www",
     "prd": "pm2 start bin/www",
     "prd-dev": "cross-env NODE_ENV=dev pm2 start bin/pm2-prd-dev.config.js",
-    "test:local": "cross-env NODE_ENV=test_local jest --runInBand  --passWithNoTests --colors --forceExit"
+    "test:local": "cross-env NODE_ENV=test_local jest --runInBand  --passWithNoTests --colors --forceExit",
+    "lint": "eslint \"src/**/*.{js,ts}\"",
+    "lint-fix": "eslint --fix \"src/**/*.{js,ts}\""
   },
   "dependencies": {
     "axios": "^0.27.2",
@@ -34,7 +36,13 @@
     "sqlite3": "^5.1.1"
   },
   "devDependencies": {
+    "eslint": "^7.8.1",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-prettier": "^3.1.4",
     "nodemon": "^1.19.1",
+    "prettier": "2.7.1",
     "supertest": "^6.2.4"
   }
 }
