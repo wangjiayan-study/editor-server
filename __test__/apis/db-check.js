@@ -1,12 +1,11 @@
-const { get } = require("./_server");
+const { get } = require('./_server')
 
-test("数据库连接", async () => {
-  const { data, errno } = await get("/api/db-check");
+test('数据库连接', async () => {
+    const { data, errno } = await get('/api/db-check')
 
-  const { redisConn, mysqlConn } = data;
-  console.log("data", data);
-  expect(errno).toBe(0);
-  expect(redisConn).toBe(true);
-  expect(mysqlConn).toBe(true);
-  // expect(mongodbConn).toBe(true);
-});
+    const { redisConn, mysqlConn } = data
+    expect(errno).toBe(0)
+    expect(redisConn).toBe(true)
+    expect(mysqlConn).toBe(true)
+    // expect(mongodbConn).toBe(true);
+})
