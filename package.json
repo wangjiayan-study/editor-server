@@ -37,6 +37,18 @@
     "sequelize": "^6.23.1",
     "sqlite3": "^5.1.1"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
   "devDependencies": {
     "@commitlint/cli": "^17.1.2",
     "@commitlint/config-conventional": "^17.1.0",
@@ -48,6 +60,7 @@
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-prettier": "^3.1.4",
     "git-cz": "^4.9.0",
+    "lint-staged": "^13.0.3",
     "nodemon": "^1.19.1",
     "prettier": "2.7.1",
     "supertest": "^6.2.4"
