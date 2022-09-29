@@ -1,6 +1,5 @@
 /**
  * @description pm2 配置文件，dev 测试机
- * @author 双越
  */
 
 const appConf = require('./pm2AppConf')

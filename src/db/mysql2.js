@@ -1,5 +1,5 @@
 const mysql = require('mysql2/promise')
-const { mysqlConf } = require('../config/envs/dev')
+const { mysqlConf } = require('../config')
 
 async function testMysqlConn() {
     const connection = await mysql.createConnection(mysqlConf)

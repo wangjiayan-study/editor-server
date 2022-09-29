@@ -3,7 +3,7 @@
  */
 
 const mongoose = require('mongoose')
-const { mongodbConf } = require('../config/envs/dev')
+const { mongodbConf } = require('../config')
 
 const { host, port, dbName, user, password } = mongodbConf
 
@@ -30,9 +30,9 @@ db.on('error', err => {
 })
 
 // // 演示注释掉即可
-db.once('open', () => {
-    // 用以测试数据库连接是否成功
-    console.log('mongoose connect success')
-})
+// db.once('open', () => {
+//     // 用以测试数据库连接是否成功
+//     console.log('mongoose connect success')
+// })
 
 module.exports = mongoose

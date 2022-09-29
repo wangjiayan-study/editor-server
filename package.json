@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "start": "node bin/www",
-    "dev": "cross-env NODE_ENV=dev ./node_modules/.bin/nodemon bin/www",
-    "prd": "pm2 start bin/www",
-    "prd-dev": "cross-env NODE_ENV=dev pm2 start bin/pm2-prd-dev.config.js",
+    "dev": "cross-env NODE_ENV=prd_dev ./node_modules/.bin/nodemon bin/www",
+    "prd": "NODE_ENV=prd_dev  pm2 start bin/www",
+    "prd-dev": "cross-env NODE_ENV=prd_dev pm2 start bin/pm2-prd-dev.config.js",
     "test:local": "cross-env NODE_ENV=test_local jest --runInBand  --passWithNoTests --colors --forceExit",
     "test:remote": "cross-env NODE_ENV=test_remote jest --runInBand  --passWithNoTests --colors --forceExit",
     "lint": "eslint \"src/**/*.{js,ts}\"",
@@ -36,7 +36,9 @@
     "pug": "^2.0.3",
     "redis": "^3.0.2",
     "sequelize": "^6.23.1",
-    "sqlite3": "^5.1.1"
+    "sqlite3": "^5.1.1",
+    "simple-git": "^2.20.1",
+    "require-all": "^3.0.0"
   },
   "husky": {
     "hooks": {

@@ -1,5 +1,6 @@
 const router = require('koa-router')()
 const testMysqlConn = require('../db/mysql2')
+const { WorkContentModel } = require('../models/WorkContent')
 const { ENV } = require('../utils/env')
 const { cacheSet, cacheGet } = require('../cache/index')
 const packageInfo = require('../../package.json')
@@ -21,9 +22,16 @@ router.get('/json', async (ctx, next) => {
 })
 // 测试数据库连接
 router.get('/api/db-check', async (ctx, next) => {
+    // 测试 mongodb 连接
+    let mongodbConn
+    try {
+        mongodbConn = true
+        await WorkContentModel.findOne()
+    } catch (e) {
+        mongodbConn = false
+    }
     // 测试 mysql 连接
     const mysqlRes = await testMysqlConn()
-    // `sequelize.define` also returns the model
     cacheSet('testCon', 'testCon Val')
     const redisTestVal = await cacheGet('testCon')
     ctx.body = {
@@ -34,7 +42,7 @@ router.get('/api/db-check', async (ctx, next) => {
             ENV,
             redisConn: redisTestVal != null,
             mysqlConn: mysqlRes.length > 0,
-            // mongodbConn,
+            mongodbConn,
         },
     }
 })
