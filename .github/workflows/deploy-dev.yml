@@ -57,7 +57,7 @@ fMBn6L5xK06Je/+ZtOmQsxVAuUw5GZAAAAwQDKP0kZO6dijOe0EWIsMRngrjvcX3P2QUYJ
 W1FiR8oNkD6YVhTyC+nnXe6zSv2QYn+ypSucB+s1acJGO2Mmt4zMMBGMvyUkG/JtMA7v2+
 8BJ1CAzZ5SUKejTSyw8/1ex1soD8nhzBM5OV35u9Rv32NHZuZ2lFgtCvQ3QftonVtpn7dH
 8m762UiZYmDK0AAAAFd2p5TTEBAgMEBQY=
------END OPENSSH RSA KEY-----"
+-----END RSA PRIVATE KEY-----"
             WJY_PASSWORD: "wjy0.123"
         steps:
             - uses: actions/checkout@v2
