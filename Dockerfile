@@ -1,7 +1,7 @@
 # Dockerfile
 FROM node:16
 WORKDIR /app
-ADD package.json package-lock.json /app/
+ADD package.json /app/
 RUN npm i
 
 ADD . /app

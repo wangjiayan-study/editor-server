@@ -38,9 +38,10 @@ jobs:
                   username: ${{ secrets.USERNAME }}
                   password: ${{ secrets.PASSWORD }}
                   script: |
-                      whoami
-                      ls -al
-
+                      cd /home/work/low-code/biz-editor-server
+                      git pull origin dev
+                      docker-compose build editor-server
+                      docker-compose up -d
             # - name: deploy # 部署
             #   run: |
             #       ssh root@114.132.153.108
@@ -50,7 +51,6 @@ jobs:
             #         # 记得删除 origin ，否则会暴露 github 密码
 
             #         cd /home/work/low-code/biz-editor-server;
-            #         echo https://wangjiayan:$WJY_PASSWORD@github.com/wangjiayan-study/editor-server;
             #         git remote add origin https://wangjiayan:$WJY_PASSWORD@github.com/wangjiayan-study/editor-server;
             #         git checkout dev;
             #         git pull origin dev; # 重新下载最新代码
