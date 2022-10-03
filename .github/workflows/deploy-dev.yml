@@ -3,7 +3,6 @@
 # github actions 中文文档 https://docs.github.com/cn/actions/getting-started-with-github-actions
 
 name: deploy for dev
-env: TEST_VAR:'2233'
 on:
     push:
         branches:
