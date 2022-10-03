@@ -9,7 +9,7 @@ module.exports = {
     // 创建渠道失败
     createChannelFailInfo: {
         errno: 15001,
-        message: '创建渠道失败',
+        message: '创建渠道失败!',
     },
 
     // 创建渠道失败 数据库错误
