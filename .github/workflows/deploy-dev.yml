@@ -31,9 +31,19 @@ jobs:
                   chmod 600 ~/.ssh/id_rsa
                   ssh-keyscan "114.132.153.108" >> ~/.ssh/known_hosts
                   cat ~/.ssh/id_rsa
-            - name: deploy # 部署
-              run: |
-                  ssh root@114.132.153.108
+            - name: 登录服务器, 执行脚本
+                uses: appleboy/ssh-action@master
+                with:
+                  host: ${{ secrets.HOST }}
+                  username: ${{ secrets.USERNAME }}
+                  password: ${{ secrets.PASSWORD }}
+                  script: | 
+                    echo "我登录了"
+
+
+            # - name: deploy # 部署
+            #   run: |
+            #       ssh root@114.132.153.108
             #       "
             #         # 【注意】用 work 账号登录，手动创建 /home/work/low-code 目录
             #         # 然后 git clone https://username:password@github.com/wangjiayan-study/editor-server -b dev （私有仓库，使用 github 用户名和密码）
