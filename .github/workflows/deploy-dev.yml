@@ -3,9 +3,9 @@
 # github actions 中文文档 https://docs.github.com/cn/actions/getting-started-with-github-actions
 
 name: deploy for dev
-env: 
-RSA_SECRET:${{ secrets.WJY_ID_RSA }}
-GH_PSW:${{ secrets.WJY_PASSWORD }}
+env: RSA_SECRET:${{ secrets.WJY_ID_RSA }}
+    GH_PSW:${{ secrets.WJY_PASSWORD }}
+    TEST_VAR:'2233'
 on:
     push:
         branches:
@@ -21,13 +21,15 @@ on:
 jobs:
     deploy-dev:
         runs-on: ubuntu-latest
-
+        environment:
+            name: dev
         steps:
             - uses: actions/checkout@v2
             - name: set ssh key # 临时设置 ssh key
               run: |
                   mkdir -p ~/.ssh/
-                  echo "${#RSA_SECRET}" > ~/.ssh/id_rsa # secret 在这里配置 https://github.com/imooc-lego/biz-editor-server/settings/secrets
+                  echo $TEST_VAR
+                  echo ${{ secrets.WJY_ID_RSA }}> ~/.ssh/id_rsa # secret 在这里配置 https://github.com/imooc-lego/biz-editor-server/settings/secrets
                   chmod 600 ~/.ssh/id_rsa
                   ssh-keyscan "114.132.153.108" >> ~/.ssh/known_hosts
             - name: deploy # 部署
@@ -38,7 +40,8 @@ jobs:
                     # 记得删除 origin ，否则会暴露 github 密码
 
                     cd /home/work/low-code/biz-editor-server;
-                    git remote add origin https://wangjiayan:${#GH_PSW}@github.com/wangjiayan-study/editor-server;
+                    echo https://wangjiayan:${{ secrets.WJY_PASSWORD }}@github.com/wangjiayan-study/editor-server;
+                    git remote add origin https://wangjiayan:${{ secrets.WJY_PASSWORD }}@github.com/wangjiayan-study/editor-server;
                     git checkout dev;
                     git pull origin dev; # 重新下载最新代码
                     git remote remove origin; # 删除 origin ，否则会暴露 github 密码
