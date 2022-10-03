@@ -23,6 +23,7 @@ jobs:
             name: dev
         env:
             WJY_ID_RSA: ${{ secrets.WJY_ID_RSA }}
+            WJY_PASSWORD: ${{ secrets.WJY_PASSWORD }}
         steps:
             - uses: actions/checkout@v2
             - name: set ssh key # 临时设置 ssh key
@@ -31,22 +32,22 @@ jobs:
                   echo $WJY_ID_RSA > ~/.ssh/id_rsa
                   chmod 600 ~/.ssh/id_rsa
                   ssh-keyscan "114.132.153.108" >> ~/.ssh/known_hosts
-            # - name: deploy # 部署
-            #   run: |
-            #       ssh work@114.132.153.108 "
-            #         # 【注意】用 work 账号登录，手动创建 /home/work/low-code 目录
-            #         # 然后 git clone https://username:password@github.com/wangjiayan-study/editor-server -b dev （私有仓库，使用 github 用户名和密码）
-            #         # 记得删除 origin ，否则会暴露 github 密码
+            - name: deploy # 部署
+              run: |
+                  ssh work@114.132.153.108 "
+                    # 【注意】用 work 账号登录，手动创建 /home/work/low-code 目录
+                    # 然后 git clone https://username:password@github.com/wangjiayan-study/editor-server -b dev （私有仓库，使用 github 用户名和密码）
+                    # 记得删除 origin ，否则会暴露 github 密码
 
-            #         cd /home/work/low-code/biz-editor-server;
-            #         echo https://wangjiayan:${{ secrets.WJY_PASSWORD }}@github.com/wangjiayan-study/editor-server;
-            #         git remote add origin https://wangjiayan:${{ secrets.WJY_PASSWORD }}@github.com/wangjiayan-study/editor-server;
-            #         git checkout dev;
-            #         git pull origin dev; # 重新下载最新代码
-            #         git remote remove origin; # 删除 origin ，否则会暴露 github 密码
-            #         # 启动 docker
-            #         docker-compose build editor-server; # 和 docker-compose.yml service 名字一致
-            #         docker-compose up -d;
-            #       "
-            # - name: delete ssh key # 删除 ssh key
-            #   run: rm -rf ~/.ssh/id_rsa
+                    cd /home/work/low-code/biz-editor-server;
+                    echo https://wangjiayan:$WJY_PASSWORD@github.com/wangjiayan-study/editor-server;
+                    git remote add origin https://wangjiayan:$WJY_PASSWORD@github.com/wangjiayan-study/editor-server;
+                    git checkout dev;
+                    git pull origin dev; # 重新下载最新代码
+                    git remote remove origin; # 删除 origin ，否则会暴露 github 密码
+                    # 启动 docker
+                    docker-compose build editor-server; # 和 docker-compose.yml service 名字一致
+                    docker-compose up -d;
+                  "
+            - name: delete ssh key # 删除 ssh key
+              run: rm -rf ~/.ssh/id_rsa
