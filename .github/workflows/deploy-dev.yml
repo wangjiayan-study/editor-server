@@ -19,18 +19,9 @@ on:
 jobs:
     deploy-dev:
         runs-on: ubuntu-latest
-        env:
-            WJY_ID_RSA: ${{ secrets.WJY_ID_RSA }}
-            WJY_PASSWORD: ${{ secrets.WJY_PASSWORD }}
         steps:
-            - uses: actions/checkout@v2
-            - name: set ssh key # 临时设置 ssh key
-              run: |
-                  mkdir -p ~/.ssh/
-                  echo $WJY_ID_RSA > ~/.ssh/id_rsa
-                  chmod 600 ~/.ssh/id_rsa
-                  ssh-keyscan "114.132.153.108" >> ~/.ssh/known_hosts
-                  cat ~/.ssh/id_rsa
+            # - uses: actions/checkout@v2
+            # - name: 执行自动化脚本
             - name: 登录服务器, 执行脚本
               uses: appleboy/ssh-action@master
               with:
@@ -39,9 +30,10 @@ jobs:
                   password: ${{ secrets.PASSWORD }}
                   script: |
                       cd /home/work/low-code/biz-editor-server
+                      git checkout dev
                       git pull origin dev
-                      docker-compose build editor-server
-                      docker-compose up -d
+                  #   docker-compose build editor-server
+                  #   docker-compose up -d
             # - name: deploy # 部署
             #   run: |
             #       ssh root@114.132.153.108
