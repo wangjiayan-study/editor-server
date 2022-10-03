@@ -29,7 +29,7 @@ jobs:
                   username: ${{ secrets.USERNAME }}
                   password: ${{ secrets.PASSWORD }}
                   script: |
-                      cd /home/work/low-code/biz-editor-server
+                      cd /home/work/low-code/editor-server
                       git checkout dev
                       git pull origin dev
                   #   docker-compose build editor-server
