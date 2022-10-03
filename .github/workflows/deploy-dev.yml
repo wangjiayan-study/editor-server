@@ -38,7 +38,8 @@ jobs:
                   username: ${{ secrets.USERNAME }}
                   password: ${{ secrets.PASSWORD }}
                   script: |
-                      pwd
+                      whoami
+                      ls -al
 
             # - name: deploy # 部署
             #   run: |
