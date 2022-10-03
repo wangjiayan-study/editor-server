@@ -21,12 +21,14 @@ jobs:
         runs-on: ubuntu-latest
         environment:
             name: dev
+        env:
+            WJY_ID_RSA: ${{ secrets.WJY_ID_RSA }}
         steps:
             - uses: actions/checkout@v2
             - name: set ssh key # 临时设置 ssh key
               run: |
                   mkdir -p ~/.ssh/
-            #       echo ${{ secrets.WJY_ID_RSA }} > ~/.ssh/id_rsa
+                  echo $WJY_ID_RSA > ~/.ssh/id_rsa
             #       chmod 600 ~/.ssh/id_rsa
             #       ssh-keyscan "114.132.153.108" >> ~/.ssh/known_hosts
             # - name: deploy # 部署
