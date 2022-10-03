@@ -19,8 +19,6 @@ on:
 jobs:
     deploy-dev:
         runs-on: ubuntu-latest
-        environment:
-            name: dev
         env:
             WJY_ID_RSA: ${{ secrets.WJY_ID_RSA }}
             WJY_PASSWORD: ${{ secrets.WJY_PASSWORD }}
