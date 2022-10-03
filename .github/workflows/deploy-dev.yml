@@ -3,9 +3,7 @@
 # github actions 中文文档 https://docs.github.com/cn/actions/getting-started-with-github-actions
 
 name: deploy for dev
-env: RSA_SECRET:${{ secrets.WJY_ID_RSA }}
-    GH_PSW:${{ secrets.WJY_PASSWORD }}
-    TEST_VAR:'2233'
+env: TEST_VAR:'2233'
 on:
     push:
         branches:
