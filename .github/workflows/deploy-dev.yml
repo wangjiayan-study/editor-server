@@ -38,7 +38,7 @@ jobs:
                   username: ${{ secrets.USERNAME }}
                   password: ${{ secrets.PASSWORD }}
                   script: |
-                      echo "我登录了"
+                      pwd
 
             # - name: deploy # 部署
             #   run: |
