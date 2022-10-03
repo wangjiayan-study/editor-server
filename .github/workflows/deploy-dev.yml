@@ -32,14 +32,13 @@ jobs:
                   ssh-keyscan "114.132.153.108" >> ~/.ssh/known_hosts
                   cat ~/.ssh/id_rsa
             - name: 登录服务器, 执行脚本
-                uses: appleboy/ssh-action@master
-                with:
+              uses: appleboy/ssh-action@master
+              with:
                   host: ${{ secrets.HOST }}
                   username: ${{ secrets.USERNAME }}
                   password: ${{ secrets.PASSWORD }}
-                  script: | 
-                    echo "我登录了"
-
+                  script: |
+                      echo "我登录了"
 
             # - name: deploy # 部署
             #   run: |
