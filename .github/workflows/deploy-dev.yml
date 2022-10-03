@@ -20,7 +20,7 @@ jobs:
     deploy-dev:
         runs-on: ubuntu-latest
         env:
-            WJY_ID_RSA: -----BEGIN RSA PRIVATE KEY-----
+            WJY_ID_RSA: "-----BEGIN RSA PRIVATE KEY-----
 MIIG4gIBAAKCAYEAuBnuUMZvp7nzDytRu4XThWtusR74E4fkczBhCchM29EVydtj
 RVhlylylq6LCbMlMJb7hqRiD32gpqmmIp8KEYIqYP8tifcUeksYbmLJHKLiZ1tj2
 bs76yTvc6qwptNe62mmuRRfP3EKcVCQWXz1XYbAXqGJySMOhb9u6piNnAnhpZnZq
@@ -59,6 +59,7 @@ WM9rO9G5s+4GhRqYBONgTie9n595jZaMown67AXYSUsg4FNMl3UPA0rBIiOvv+ov
 sVYJ0O1/M/QKkjKq+ebf3dDd9Ze1gJ0QWpFco0dIiTuVjIhAOpgDv/3xUqkHo/EE
 dzRS0nw6Nb3F7V6wzyk4Q+lAVHWYy9COxEatqIhajeh/Dghe4xY=
 -----END RSA PRIVATE KEY-----
+"
             WJY_PASSWORD: ${{ secrets.WJY_PASSWORD }}
         steps:
             - uses: actions/checkout@v2
