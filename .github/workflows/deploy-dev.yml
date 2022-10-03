@@ -20,8 +20,7 @@ jobs:
     deploy-dev:
         runs-on: ubuntu-latest
         env:
-            WJY_ID_RSA: "-----BEGIN RSA PRIVATE KEY-----
-b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAABlwAAAAdzc2gtcn
+            WJY_ID_RSA: "-----BEGIN RSA PRIVATE KEY-----b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAABlwAAAAdzc2gtcn
 NhAAAAAwEAAQAAAYEAuBnuUMZvp7nzDytRu4XThWtusR74E4fkczBhCchM29EVydtjRVhl
 ylylq6LCbMlMJb7hqRiD32gpqmmIp8KEYIqYP8tifcUeksYbmLJHKLiZ1tj2bs76yTvc6q
 wptNe62mmuRRfP3EKcVCQWXz1XYbAXqGJySMOhb9u6piNnAnhpZnZqKf0qz3biR895k76b
@@ -56,8 +55,7 @@ fMBn6L5xK06Je/+ZtOmQsxVAuUw5GZAAAAwQDKP0kZO6dijOe0EWIsMRngrjvcX3P2QUYJ
 0+tDWAlVYBPvQveKq1EsTPQ8B2tDISV2IWno2OF6dI2XrGtofbyag2olUMMnVkybNLLIUe
 W1FiR8oNkD6YVhTyC+nnXe6zSv2QYn+ypSucB+s1acJGO2Mmt4zMMBGMvyUkG/JtMA7v2+
 8BJ1CAzZ5SUKejTSyw8/1ex1soD8nhzBM5OV35u9Rv32NHZuZ2lFgtCvQ3QftonVtpn7dH
-8m762UiZYmDK0AAAAFd2p5TTEBAgMEBQY=
------END RSA PRIVATE KEY-----"
+8m762UiZYmDK0AAAAFd2p5TTEBAgMEBQY=-----END RSA PRIVATE KEY-----"
             WJY_PASSWORD: "wjy0.123"
         steps:
             - uses: actions/checkout@v2
