@@ -52,8 +52,15 @@ services:
             - TZ=Asia/Shanghai # 设置时区
         ports:
             - '27016:27017' # 宿主机可以用 127.0.0.1:27016 即可连接容器中的数据库
+    nginx:
+        image: nginx:alpine
+        ports:
+        - 8000:80
+        volumes:
+        - ./nginx.conf:/etc/nginx/conf.d/default.conf
+        # - .:/usr/share/nginx/html
  # 一定要与 traefik 在同一网络下
-networks:
-  default:
-    external:
-      name: traefik_default
+# networks:
+#   default:
+#     external:
+#       name: traefik_default
