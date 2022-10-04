@@ -29,6 +29,7 @@ jobs:
                   username: root
                   password: ${{ secrets.PASSWORD }}
                   script: |
+                      set -e
                       cd /root/code/low-code/editor-server
                       git fetch origin dev
                       docker-compose build editor-server
