@@ -26,14 +26,13 @@ jobs:
               uses: appleboy/ssh-action@master
               with:
                   host: ${{ secrets.HOST }}
-                  username: ${{ secrets.USERNAME }}
+                  username: root
                   password: ${{ secrets.PASSWORD }}
                   script: |
-                      cd /home/work/low-code/editor-server
-                      git checkout dev
-                      git pull origin dev
-                  #   docker-compose build editor-server
-                  #   docker-compose up -d
+                      cd /root/code/low-code/editor-server
+                      git fetch origin dev
+                      docker-compose build editor-server
+                      docker-compose up -d
             # - name: deploy # 部署
             #   run: |
             #       ssh root@114.132.153.108
