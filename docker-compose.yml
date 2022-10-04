@@ -9,11 +9,11 @@ services:
         ports:
             - 8081:3000 # 宿主机通过 8081 访问
         labels:
-        # 为 cra 配置我们的自定义域名
-        - "traefik.http.routers.cra.rule=Host(`editor-server.wangjiayan.cn`)"
+        # 为 editor-server 配置我们的自定义域名
+        - "traefik.http.routers.editor-server.rule=Host(`editor-server.wangjiayan.cn`)"
         # 设置 https，此时我们的 certresolver 为 le，与上篇文章配置保持一致
-        - traefik.http.routers.cra.tls=true
-        - traefik.http.routers.cra.tls.certresolver=le
+        - traefik.http.routers.editor-server.tls=true
+        - traefik.http.routers.editor-server.tls.certresolver=le
     editor-redis:
         image: redis # 引用官网 redis 镜像
         container_name: editor-redis
