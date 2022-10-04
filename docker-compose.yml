@@ -8,6 +8,12 @@ services:
         container_name: editor-server
         ports:
             - 8081:3000 # 宿主机通过 8081 访问
+        labels:
+        # 为 cra 配置我们的自定义域名
+        - "traefik.http.routers.cra.rule=Host(`editor-server.wangjiayan.cn`)"
+        # 设置 https，此时我们的 certresolver 为 le，与上篇文章配置保持一致
+        - traefik.http.routers.cra.tls=true
+        - traefik.http.routers.cra.tls.certresolver=le
     editor-redis:
         image: redis # 引用官网 redis 镜像
         container_name: editor-redis
@@ -46,3 +52,8 @@ services:
             - TZ=Asia/Shanghai # 设置时区
         ports:
             - '27016:27017' # 宿主机可以用 127.0.0.1:27016 即可连接容器中的数据库
+ # 一定要与 traefik 在同一网络下
+networks:
+  default:
+    external:
+      name: traefik_default
